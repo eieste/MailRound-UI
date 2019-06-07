@@ -12,14 +12,14 @@ class RegexConverter(BaseConverter):
         self.regex = items[0]
 
 
-app = Flask(__name__, static_url_path='')
-cache = Cache(app,config={'CACHE_TYPE': 'simple'})
-cache.init_app(app)
+application = Flask(__name__, static_url_path='')
+cache = Cache(application,config={'CACHE_TYPE': 'simple'})
+cache.init_app(application)
 
-CORS(app)
+CORS(application)
 
 @cache.cached(timeout=50)
-@app.route("/api/blob/get")
+@application.route("/api/blob/get")
 def api_blob_get():
 
     with open(os.environ.get("MRMP_FILE", "./data.mrmp"), "rb") as fobj:
@@ -31,17 +31,17 @@ def api_blob_get():
         mimetype='application/x-msgpack'
     )
 
-app.url_map.converters['regex'] = RegexConverter
+application.url_map.converters['regex'] = RegexConverter
 
-@app.route(r'/<regex(".*"):path>')
+@application.route(r'/<regex(".*"):path>')
 def static_file(path):
     print(path)
     return send_file(path)
 
-@app.route(r'/')
+@application.route(r'/')
 def root():
     print("a")
     return send_file('index.html')
 
 if __name__ is "__main__":
-    app.run()
+    application.run()
