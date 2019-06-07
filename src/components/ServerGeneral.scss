@@ -1,0 +1,25 @@
+.state{
+  position: relative;
+  width:100%;
+  float:left;
+
+
+  .state-dot{
+    height: 1px;
+    padding:0;
+    width: 1px;
+    background-color: rgb(0,255,0);
+    border-radius: 1px;
+    box-shadow: 0 0 10px 3px rgba(0,255,0,1);
+    margin: 10px;
+    float:left;
+    display:block;
+  }
+
+  .state-text{
+    margin-left:10px;
+    float:left;
+    position:relative;
+    display:inline-block;
+  }
+}

@@ -1,0 +1,78 @@
+.calendar{
+  position: relative;
+  display:block;
+  text-align:center;
+
+
+  .month_list{
+    position: relative;
+    float: left;
+    display:inline-block;
+
+    .month_box  {
+      width: 100%;
+      position: relative;
+
+
+      .month_all_week{
+        margin: 5px;
+      }
+    }
+
+    .month{
+      position:relative;
+      display:inline-block;
+      margin: 0;
+
+      .week{
+        width: 20px;
+        position: relative;
+        float:left;
+        text-align:left;
+        margin: 1px;
+
+        .day{
+          position: relative;
+          float:left;
+          height:20px;
+          width:20px;
+          margin: 1px;
+          text-align: center;
+          line-height: 20px;
+          font-size:10px;
+          background: #E0E0E0;
+          color: slategray;
+
+          &.healthy{
+            background-color: lawngreen;
+          }
+
+          &.poisoned{
+            background:gold;
+          }
+
+          &.dead{
+            background:orangered;
+          }
+
+          &.unscanned{
+            background: aliceblue;
+          }
+
+          &.future{
+            background:white;
+          }
+
+          &.othermonth{
+            background: #f8f8f8;
+            opacity: 0.5;
+          }
+        }
+
+      }
+
+    }
+
+  }
+
+}
