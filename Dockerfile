@@ -1,28 +1,21 @@
 FROM node:8.16.0-jessie
 
 
-COPY . /app/
+COPY ./src /app/src
+COPY ./public /app/public
+COPY ./package.json /app/package.json
+COPY ./package-lock.json /app/package-lock.json
 
-RUN cd /app ; \
-    npm install; \
-    npm run build
-
-
-FROM python:3.6.8
-
-COPY --from=0 /app/build/ /usr/src/app/
-
-COPY ./app.py /usr/src/app/
-
-RUN pip3 install Flask==1.0.3 Flask-Caching==1.7.2 Flask-Cors==3.0.7 gunicorn
-
-WORKDIR /usr/src/app/
+RUN cd /app ; npm install
+RUN cd /app ; npm run build
 
 
-# ENV FLASK_APP=
-ENTRYPOINT ["flask"]
+FROM tiangolo/uwsgi-nginx-flask:python3.7
 
+RUN pip3 install Flask-Caching==1.7.2 Flask-Cors==3.0.7 gunicorn
 
-CMD ["run", "-h", "0.0.0.0", "-p", "80" ]
+COPY --from=0 /app/build/ /app/
+COPY main.py /app/
+WORKDIR /app
 
 
