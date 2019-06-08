@@ -29,7 +29,7 @@ export default class App extends React.Component {
         fetch("/api/blob/get").then((response)=>{
             response.arrayBuffer().then((buf) => {
                 let mrmp = msgpack.decode(new Buffer(buf));
-                console.log(mrmp);
+
                 self.setState({
                     mrmp
                 });

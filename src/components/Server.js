@@ -73,7 +73,6 @@ export default class Server extends React.Component {
                 }
 
                 if(end){
-                    console.log(end, state_item.timestamp);
                     group["round_duration"] = end-state_item.timestamp;
                 }
 

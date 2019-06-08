@@ -28,8 +28,6 @@ export default class ServerResponseGraph extends React.Component {
             });
         });
 
-        console.log(round_duration_series);
-
         self.setState({
             data_series: [
                 {
