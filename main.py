@@ -4,6 +4,7 @@ import io
 from flask_caching import Cache
 from werkzeug.routing import BaseConverter
 import os
+from werkzeug.wsgi import FileWrapper
 
 
 class RegexConverter(BaseConverter):
@@ -25,8 +26,10 @@ def api_blob_get():
     with open(os.environ.get("MAILROUND_STATUS_LOG_PATH", "./data.mrmp"), "rb") as fobj:
         bin_data = io.BytesIO(fobj.read())
 
+    w = FileWrapper(bin_data)
+
     return send_file(
-        bin_data,
+        w,
         attachment_filename='data.mrmp',
         mimetype='application/x-msgpack'
     )
