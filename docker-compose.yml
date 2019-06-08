@@ -8,3 +8,7 @@ services:
       context: .
     ports:
       - 8000:80
+    environment:
+      MAILROUND_STATUS_LOG_PATH: /share/data.mrmp
+    volumes:
+      - ./data.mrmp:/share/data.mrmp

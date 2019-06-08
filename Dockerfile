@@ -16,6 +16,6 @@ RUN pip3 install Flask-Caching==1.7.2 Flask-Cors==3.0.7 gunicorn
 
 COPY --from=0 /app/build/ /app/
 COPY main.py /app/
+ENV UWSGI_INI /app/uwsgi.ini
+COPY uwsgi.ini /app/
 WORKDIR /app
-
-

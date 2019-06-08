@@ -29,7 +29,7 @@ def api_blob_get():
     w = FileWrapper(bin_data)
 
     return send_file(
-        w,
+        bin_data,
         attachment_filename='data.mrmp',
         mimetype='application/x-msgpack'
     )
