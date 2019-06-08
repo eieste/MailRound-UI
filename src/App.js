@@ -26,7 +26,7 @@ export default class App extends React.Component {
     componentDidMount() {
         let self = this;
 
-        fetch("http://127.0.0.1:5000/api/blob/get").then((response)=>{
+        fetch("/api/blob/get").then((response)=>{
             response.arrayBuffer().then((buf) => {
                 let mrmp = msgpack.decode(new Buffer(buf));
                 console.log(mrmp);
