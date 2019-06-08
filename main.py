@@ -22,7 +22,7 @@ CORS(app)
 @app.route("/api/blob/get")
 def api_blob_get():
 
-    with open(os.environ.get("MAILROUND_STATUS_LOG_PATH:", "./data.mrmp"), "rb") as fobj:
+    with open(os.environ.get("MAILROUND_STATUS_LOG_PATH", "./data.mrmp"), "rb") as fobj:
         bin_data = io.BytesIO(fobj.read())
 
     return send_file(
