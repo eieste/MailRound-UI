@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "bulma": "^0.7.5",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "moment": "^2.24.0",
     "msgpack-lite": "^0.1.26",
     "react": "^16.8.6",
